@@ -1,0 +1,75 @@
+/* Đặt lại các kiểu mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Định dạng thanh điều hướng */
+.navbar {
+    background-color: #1a1a1a; /* Màu nền tối */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Định dạng menu */
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+/* Định dạng logo */
+.navbar-logo {
+    margin: 0 2rem; /* Khoảng cách giữa logo và các mục menu */
+}
+
+.navbar-logo img {
+    height: 40px;
+}
+
+/* Định dạng các mục trong menu */
+.navbar-menu li {
+    margin: 0 1rem;
+}
+
+/* Định dạng liên kết */
+.navbar-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+/* Hiệu ứng hover */
+.navbar-menu a:hover {
+    color: #ff6600; /* Màu cam nổi bật khi hover */
+}
+
+/* Định dạng ảnh dưới navbar */
+.image-container {
+    text-align: center;
+}
+
+.image-container img {
+    width: 100%; /* Để ảnh chiếm hết chiều rộng */
+    max-width: 2000px; /* Giới hạn chiều rộng ảnh */
+    height: auto; /* Giữ tỷ lệ ảnh */
+}
+
+.Search{
+    text-align: center;
+    font-size: 25px;
+}
+
+#what_to_see{
+    width: 600px;
+    height: 25px;
+}
+
+#button{
+    font-size: 15px;
+    padding: 5px 24px;
+}
