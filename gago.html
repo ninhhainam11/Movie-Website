@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Footer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .footer {
+            background-color: #111;
+            padding: 40px 20px;
+            color: #bbb;
+            text-align: left;
+        }
+        .footer h3 {
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .footer p {
+            color: #bbb;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        .footer .footer-columns {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 150px;
+            margin: 10px 20px;
+        }
+        .footer-column a {
+            display: block;
+            color: #bbb;
+            font-size: 13px;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .footer-column a:hover {
+            color: #fff;
+        }
+        .footer .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons a {
+            color: #bbb;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #fff;
+        }
+        .footer-logo {
+            text-align: center;
+            margin-top: 40px;
+            color: orange;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <h3>Customer Service</h3>
+        <p>To get in touch, please visit the FAQS page. Our customer service team are available from 9am-7pm, daily.</p>
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Get in Touch</h3>
+                <a href="#">FAQs</a>
+                <a href="#">Voucher Checker</a>
+                <a href="#">Give Us Feedback</a>
+            </div>
+            <div class="footer-column">
+                <h3>About Vue</h3>
+                <a href="#">iOS App</a>
+                <a href="#">Android App</a>
+                <a href="#">Trailers</a>
+                <a href="#">Back On The Big Screen</a>
+                <a href="#">Articles</a>
+                <a href="#">Gift Cards</a>
+                <a href="#">Offers</a>
+                <a href="#">IMAX</a>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Big Screen Experiences</a>
+                <a href="#">Advertising & Bulk Tickets</a>
+                <a href="#">Conferencing</a>
+                <a href="#">Vue International</a>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <a href="#">Accessibility</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Allergens & Nutrition</a>
+                <a href="#">Modern Slavery Statement</a>
+            </div>
+            <div class="footer-column">
+                <h3>Social</h3>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">TikTok</a>
+                <a href="#">X</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="footer-logo">VUE</div>
+    </footer>
+</body>
+</html>
