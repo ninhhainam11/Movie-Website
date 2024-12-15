@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "imageUrl": "https://via.placeholder.com/300",
+        "title": "Card 1",
+        "description": "This is the description for card 1."
+    },
+    {
+        "id": 2,
+        "imageUrl": "https://via.placeholder.com/300",
+        "title": "Card 2",
+        "description": "This is the description for card 2."
+    }
+]
+
+    

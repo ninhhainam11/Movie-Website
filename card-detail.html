@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Detail</title>
+</head>
+<body>
+    <div id="card-detail"></div>
+    <script>
+        $(document).ready(function () {
+            // Get the card ID from the query parameter
+            const params = new URLSearchParams(window.location.search);
+            const cardId = params.get('id');
+
+            // Fetch the card data and display the details
+            $.getJSON("card.json", function (cardData) {
+                const card = cardData.find(c => c.id == cardId);
+                if (card) {
+                    $('#card-detail').html(`
+                        <h1>Card ID: ${card.id}</h1>
+                        <img src="${card.imageUrl}" alt="Card Image" />
+                    `);
+                } else {
+                    $('#card-detail').text("Card not found.");
+                }
+            }).fail(function () {
+                console.error("Failed to load card.json");
+            });
+        });
+    </script>
+</body>
+</html>
