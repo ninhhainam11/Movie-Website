@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 4 Dynamic Cards</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <!-- Group of buttons for date filters -->
+        <div id="date-buttons-container" class="btn-group mb-3" role="group" aria-label="Date Filter">
+            <!-- Date buttons will be appended here -->
+        </div>
+        <div class="row" id="image-cards-container">
+            <!-- Dynamic cards will be appended here -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Load the card template from card.html
+            $.get("card.html", function (templateHtml) {
+                // Fetch the JSON data
+                $.getJSON("card.json", function (cardData) {
+                    function displayCards(cards) {
+                        // Clear the container before appending new cards
+                        $('#image-cards-container').empty();
+
+                        cards.forEach(function (card) {
+                            // Create a new card using the loaded template
+                            const cardTemplate = $(templateHtml);
+
+                            // Populate the card with JSON data
+                            cardTemplate.find('.card-img-left')
+                                .attr('src', card.imageUrl || 'default-image.jpg') // Fallback image
+                                .attr('alt', card.name || 'Movie image');
+                            cardTemplate.find('.card-title').text(card.name || 'Untitled');
+                            cardTemplate.find('.movie-type').text(card.type || 'N/A');
+                            cardTemplate.find('.movie-length').text(card.length || 'N/A');
+                            cardTemplate.find('.movie-start-time').text(card.startDate || 'N/A');
+                            cardTemplate.find('.movie-description').text(card.description || 'No description available.');
+
+                            // Add click event to navigate to the movie detail page
+                            cardTemplate.css('cursor', 'pointer');
+                            cardTemplate.on('click', function () {
+                                window.location.href = `card-detail.html?id=${card.id}`; // Pass the movie ID in the query string
+                            });
+
+                            // Append the populated card to the container
+                            $('#image-cards-container').append(cardTemplate);
+                        });
+                    }
+
+                    // Display the cards initially
+                    displayCards(cardData);
+
+                    // Get all unique dates from the card data
+                    const uniqueDates = [...new Set(cardData.map(card => card.startDate))];
+
+                    // Create a button for each unique date
+                    uniqueDates.forEach(date => {
+                        const button = $('<button>')
+                            .addClass('btn btn-secondary')
+                            .text(date)
+                            .on('click', function () {
+                                const filteredMovies = cardData.filter(card => card.startDate === date);
+                                displayCards(filteredMovies); // Display the filtered cards
+                            });
+                        $('#date-buttons-container').append(button);
+                    });
+                }).fail(function () {
+                    console.error("Failed to load card.json");
+                });
+            }).fail(function () {
+                console.error("Failed to load card.html");
+            });
+
+            // Load navbar.html
+            $.get("navbar.html", function (navbarHtml) {
+                // Append the navbar to the body
+                $('body').prepend(navbarHtml);
+            }).fail(function () {
+                console.error("Failed to load navbar.html");
+            });
+
+            // Load footer.html
+            $.get("footer.html", function (footerHtml) {
+                // Append the footer to the body
+                $('body').append(footerHtml);
+            }).fail(function () {
+                console.error("Failed to load footer.html");
+            });
+        });
+    </script>
+</body>
+</html>

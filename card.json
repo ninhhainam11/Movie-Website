@@ -1,16 +1,47 @@
 [
     {
         "id": 1,
-        "imageUrl": "https://via.placeholder.com/300",
-        "title": "Card 1",
-        "description": "This is the description for card 1."
+        "imageUrl": "./assets/wicked.png",
+        "name": "Inception",
+        "type": "Sci-Fi",
+        "length": "2h 28m",
+        "startDate": "16-12-2024",
+        "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO."
     },
     {
         "id": 2,
-        "imageUrl": "https://via.placeholder.com/300",
-        "title": "Card 2",
-        "description": "This is the description for card 2."
+        "imageUrl": "./assets/linhmieu.png",
+        "name": "The Dark Knight",
+        "type": "Action",
+        "length": "2h 32m",
+        "startDate": "17-12-2024",
+        "description": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham."
+    },
+    {
+        "id": 3,
+        "imageUrl": "./assets/wicked.png",
+        "name": "Inception",
+        "type": "Sci-Fi",
+        "length": "2h 28m",
+        "startDate": "16-12-2024",
+        "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO."
+    },
+    {
+        "id": 4,
+        "imageUrl": "./assets/wicked.png",
+        "name": "Inception",
+        "type": "Sci-Fi",
+        "length": "2h 28m",
+        "startDate": "16-12-2024",
+        "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO."
+    },
+    {
+        "id": 5,
+        "imageUrl": "./assets/wicked.png",
+        "name": "Inception",
+        "type": "Sci-Fi",
+        "length": "2h 28m",
+        "startDate": "16-12-2024",
+        "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO."
     }
 ]
-
-    

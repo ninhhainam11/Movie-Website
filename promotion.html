@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div> 
-        hi
+    <div class="container mt-5">
+        <!-- Group of buttons for date filters -->
+        <div id="date-buttons-container" class="btn-group mb-3" role="group" aria-label="Date Filter">
+            <!-- Date buttons will be appended here -->
+        </div>
+        <div class="row" id="image-cards-container">
+            <!-- Dynamic cards will be appended here -->
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -17,6 +23,7 @@
 
     <script>
         $(document).ready(function () {
+
             // Load other files (navbar, footer, etc.)
             $.get("navbar.html", function (navbarHtml) {
                 $('body').prepend(navbarHtml);
@@ -29,6 +36,9 @@
             }).fail(function () {
                 console.error("Failed to load footer.html");
             });
+
+
+            
         });
     </script>
 </body>

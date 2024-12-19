@@ -3,31 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Detail</title>
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div id="card-detail"></div>
-    <script>
-        $(document).ready(function () {
-            // Get the card ID from the query parameter
-            const params = new URLSearchParams(window.location.search);
-            const cardId = params.get('id');
 
-            // Fetch the card data and display the details
-            $.getJSON("card.json", function (cardData) {
-                const card = cardData.find(c => c.id == cardId);
-                if (card) {
-                    $('#card-detail').html(`
-                        <h1>Card ID: ${card.id}</h1>
-                        <img src="${card.imageUrl}" alt="Card Image" />
-                    `);
-                } else {
-                    $('#card-detail').text("Card not found.");
-                }
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img id="movie-image" src="" alt="Movie Image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h1 id="movie-title"></h1>
+                <p><strong>Type:</strong> <span id="movie-type"></span></p>
+                <p><strong>Length:</strong> <span id="movie-length"></span></p>
+                <p><strong>Start Date:</strong> <span id="movie-start-time"></span></p>
+                <p><strong>Description:</strong></p>
+                <p id="movie-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+$(document).ready(function () {
+    // Get the movie ID from the URL (e.g., ?id=1)
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieId = urlParams.get('id');
+
+    if (!movieId) {
+        $('body').html('<h1>Movie ID is missing</h1>');
+        return;
+    }
+
+    // Fetch the JSON data
+    $.getJSON('card.json', function (cardData) {
+        // Ensure both movie.id and movieId are the same type for comparison
+        const movie = cardData.find(card => card.id.toString() === movieId);
+
+        if (movie) {
+            // Populate the details page with the movie data
+            $('#movie-image').attr('src', movie.imageUrl || 'default-image.jpg');
+            $('#movie-title').text(movie.name || 'Untitled');
+            $('#movie-type').text(movie.type || 'N/A');
+            $('#movie-length').text(movie.length || 'N/A');
+            $('#movie-start-time').text(movie.startDate || 'N/A');
+            $('#movie-description').text(movie.description || 'No description available.');
+        } else {
+            // If the movie is not found, show an error message
+            $('body').html('<h1>Movie not found</h1>');
+        }
+    }).fail(function () {
+        console.error("Failed to load card.json");
+    });
+
+                // Load navbar.html
+                $.get("navbar.html", function (navbarHtml) {
+                // Append the navbar to the body
+                $('body').prepend(navbarHtml);
             }).fail(function () {
-                console.error("Failed to load card.json");
+                console.error("Failed to load navbar.html");
             });
-        });
+
+            // Load footer.html
+            $.get("footer.html", function (footerHtml) {
+                // Append the footer to the body
+                $('body').append(footerHtml);
+            }).fail(function () {
+                console.error("Failed to load footer.html");
+            });
+});
+
+
     </script>
 </body>
 </html>
