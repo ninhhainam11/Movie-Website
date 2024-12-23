@@ -1,0 +1,27 @@
+{
+    "movies": [
+      {
+        "id": 1,
+        "name": "Wicked",
+        "image": "https://www.myvue.com/-/jssmedia/vuecinemas/img/import/f915bf44-c058-47dd-9cef-59eaf10a0e3c_wicked_posters_wkd_digital_1sheet_712px.jpg?mw=450&rev=a14725b485e544baa63d231807adcbf8"
+      },
+      {
+        "id": 2,
+        "name": "Avatar 2",
+        "image": "https://www.myvue.com/-/jssmedia/vuecinemas/img/import/avatar-the-way-of-water_posters_avatar_the-_way_of_water_payoff_1sht_712px.jpg?mw=450&rev=e90975805adb4b83b5284617be32c6fe"
+      }
+     
+    ],
+    "showtimes": [
+      {
+        "movieId": 1,
+        "dates": ["07/12", "08/12"],
+        "times": ["22:30", "23:30"]
+      },
+      {
+        "movieId": 2,
+        "dates": ["07/12"],
+        "times": ["20:00", "21:00"]
+      }
+    ]
+  }

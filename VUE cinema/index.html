@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Cinema</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <div id="movie-list"></div>
+    <div id="summary-box"></div>
+  </div>
+  <div id="footer"></div>
+
+  <script>
+    // Load components
+    $("#navbar").load("navbar.html");
+    $("#movie-list").load("movie-list.html", function() {
+      loadMovies();
+    });
+    $("#summary-box").load("summary-box.html");
+    $("#footer").load("footer.html");
+
+    // Load movies from JSON
+    function loadMovies() {
+      $.getJSON("data.json", function(data) {
+        let movieHtml = "";
+        data.movies.forEach(movie => {
+          movieHtml += `
+            <div class="movie" data-id="${movie.id}">
+              <img src="${movie.image}" alt="${movie.name}">
+              <p>${movie.name}</p>
+            </div>`;
+        });
+        $("#movies-container").html(movieHtml);
+
+        // Handle movie click
+        $(".movie").click(function() {
+          const movieId = $(this).data("id");
+          loadShowtimes(movieId);
+        });
+      });
+    }
+
+    // Load showtimes for selected movie
+    function loadShowtimes(movieId) {
+      $.getJSON("data.json", function(data) {
+        const showtimes = data.showtimes.find(st => st.movieId === movieId);
+        let showtimeHtml = "<h3>Chọn suất</h3>";
+
+        showtimes.dates.forEach(date => {
+          showtimeHtml += `<div class="date">${date}</div>`;
+          showtimeHtml += `<div class="times">`;
+          showtimes.times.forEach(time => {
+            showtimeHtml += `<button class="time-btn">${time}</button>`;
+          });
+          showtimeHtml += `</div>`;
+        });
+
+        $("#showtimes-container").html(showtimeHtml);
+      });
+    }
+  </script>
+</body>
+</html>
