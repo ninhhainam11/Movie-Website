@@ -1,0 +1,31 @@
+<div id="movies">
+    <h2>Chọn phim</h2>
+    <div id="movies-container" class="movies-container"></div>
+  </div>
+  
+  <div class="dropdown">
+    <label for="choose-time-slot">Chọn suất</label>
+    <select id="choose-time-slot">
+      <option value="today">Hôm nay (07/12)</option>
+      <option value="tomorrow">Ngày mai (08/12)</option>
+    </select>
+    <div class="time-slots">
+      <div class="date" id="today">
+        <button class="time-slot">22:30</button>
+        <button class="time-slot">23:30</button>
+      </div>
+      <div class="date" id="tomorrow" style="display:none;">
+        <button class="time-slot">20:30</button>
+        <button class="time-slot">21:30</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('choose-time-slot').addEventListener('change', function() {
+      const selectedDate = this.value;
+      document.querySelectorAll('.date').forEach(dateDiv => {
+        dateDiv.style.display = dateDiv.id === selectedDate ? 'block' : 'none';
+      });
+    });
+  </script>

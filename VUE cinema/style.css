@@ -1,0 +1,186 @@
+/* style.css */
+:root {
+    --font-family: Arial, sans-serif;
+    --background-color: #111;
+    --text-color: #fff;
+    --navbar-color: #222;
+    --highlight-color: orange;
+    --dropdown-bg: #ccc;
+    --movie-bg: #333;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .navbar {
+    background-color: var(--navbar-color);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar .logo {
+    font-size: 24px;
+    color: var(--highlight-color);
+    margin-right: 50px;
+  }
+  
+  .navbar .menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .navbar .menu li {
+    cursor: pointer;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  #movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: var(--dropdown-bg);
+    padding: 20px;
+    border-radius: 5px;
+    flex: 2;
+  }
+  
+  .movie {
+    background-color: var(--movie-bg);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .movie img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .summary-box {
+    background-color: var(--navbar-color);
+    padding: 20px;
+    border-radius: 5px;
+    width: 30%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .summary-box img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .summary-box button {
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    margin-bottom: 20px;
+    background-color: var(--dropdown-bg);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .dropdown select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .dropdown select:focus {
+    outline: 2px solid var(--highlight-color);
+    outline-offset: 2px;
+  }
+  
+  footer {
+    background-color: var(--navbar-color);
+    padding: 10px;
+    text-align: center;
+  }
+  
+  footer .social-icons span {
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  /* CSS for the "Chọn suất" section */
+
+.dropdown {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: var(--dropdown-bg);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-color);
+  }
+  
+  .dropdown select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .dropdown select:focus {
+    outline: 2px solid var(--highlight-color);
+    outline-offset: 2px;
+  }
+  
+  .time-slots {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .time-slot {
+    padding: 10px 15px;
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .time-slot:hover {
+    background-color: #ff9c00;
+  }
+  
+  .time-slot:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+  
