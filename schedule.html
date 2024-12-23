@@ -9,10 +9,14 @@
 </head>
 <body>
 
+    <h2 class="text-center mt-5 my-4">Phim Đang Chiếu</h2>
+
     <div class="container mt-5">
         <!-- Group of buttons for date filters -->
-        <div id="date-buttons-container" class="btn-group mb-3" role="group" aria-label="Date Filter">
-            <!-- Date buttons will be appended here -->
+        <div class="d-flex justify-content-center">
+            <div id="date-buttons-container" class="btn-group mb-3" role="group" aria-label="Date Filter">
+                <!-- Date buttons will be appended here -->
+            </div>
         </div>
         <div class="row" id="image-cards-container">
             <!-- Dynamic cards will be appended here -->
@@ -25,77 +29,82 @@
 
     <script>
         $(document).ready(function () {
-            // Load the card template from card.html
-            $.get("card.html", function (templateHtml) {
+            // Load the card template from ./components/schedule-card.html
+            $.get("./components/schedule-card.html", function (templateHtml) {
                 // Fetch the JSON data
-                $.getJSON("card.json", function (cardData) {
-                    function displayCards(cards) {
-                        // Clear the container before appending new cards
-                        $('#image-cards-container').empty();
+                $.getJSON("./data/card.json", function (cardData) {
+                    console.log("Card Data:", cardData);  // Check if the data is loaded correctly
+                    if (cardData && cardData.length > 0) {
+                        function displayCards(cards) {
+                            // Clear the container before appending new cards
+                            $('#image-cards-container').empty();
 
-                        cards.forEach(function (card) {
-                            // Create a new card using the loaded template
-                            const cardTemplate = $(templateHtml);
+                            cards.forEach(function (card) {
+                                // Create a new card using the loaded template
+                                const cardTemplate = $(templateHtml);
 
-                            // Populate the card with JSON data
-                            cardTemplate.find('.card-img-left')
-                                .attr('src', card.imageUrl || 'default-image.jpg') // Fallback image
-                                .attr('alt', card.name || 'Movie image');
-                            cardTemplate.find('.card-title').text(card.name || 'Untitled');
-                            cardTemplate.find('.movie-type').text(card.type || 'N/A');
-                            cardTemplate.find('.movie-length').text(card.length || 'N/A');
-                            cardTemplate.find('.movie-start-time').text(card.startDate || 'N/A');
-                            cardTemplate.find('.movie-description').text(card.description || 'No description available.');
+                                // Populate the card with JSON data
+                                cardTemplate.find('.card-img-left')
+                                    .attr('src', card.imageUrl || 'default-image.jpg') // Fallback image
+                                    .attr('alt', card.name || 'Movie image');
+                                cardTemplate.find('.card-title').text(card.name || 'Untitled');
+                                cardTemplate.find('.movie-type').text(card.type || 'N/A');
+                                cardTemplate.find('.movie-length').text(card.length || 'N/A');
+                                cardTemplate.find('.movie-start-time').text(card.startDate || 'N/A');
+                                cardTemplate.find('.movie-description').text(card.description || 'No description available.');
 
-                            // Add click event to navigate to the movie detail page
-                            cardTemplate.css('cursor', 'pointer');
-                            cardTemplate.on('click', function () {
-                                window.location.href = `card-detail.html?id=${card.id}`; // Pass the movie ID in the query string
+                                // Add click event to navigate to the movie detail page
+                                cardTemplate.css('cursor', 'pointer');
+                                cardTemplate.on('click', function () {
+                                    window.location.href = `card-detail.html?id=${card.id}`; // Pass the movie ID in the query string
+                                });
+
+                                // Append the populated card to the container
+                                $('#image-cards-container').append(cardTemplate);
                             });
+                        }
 
-                            // Append the populated card to the container
-                            $('#image-cards-container').append(cardTemplate);
+                        // Display the cards initially
+                        displayCards(cardData);
+
+                        // Get all unique dates from the card data
+                        const uniqueDates = [...new Set(cardData.flatMap(card => card.dates))];
+
+                        // Create a button for each unique date
+                        uniqueDates.forEach(date => {
+                            const button = $('<button>')
+                                .addClass('btn btn-secondary')
+                                .text(date)
+                                .on('click', function () {
+                                    const filteredMovies = cardData.filter(card => card.dates.includes(date));
+                                    displayCards(filteredMovies); // Display the filtered cards
+                                });
+                            $('#date-buttons-container').append(button);
                         });
+                    } else {
+                        console.error("No data available in card.json");
                     }
-
-                    // Display the cards initially
-                    displayCards(cardData);
-
-                    // Get all unique dates from the card data
-                    const uniqueDates = [...new Set(cardData.map(card => card.startDate))];
-
-                    // Create a button for each unique date
-                    uniqueDates.forEach(date => {
-                        const button = $('<button>')
-                            .addClass('btn btn-secondary')
-                            .text(date)
-                            .on('click', function () {
-                                const filteredMovies = cardData.filter(card => card.startDate === date);
-                                displayCards(filteredMovies); // Display the filtered cards
-                            });
-                        $('#date-buttons-container').append(button);
-                    });
                 }).fail(function () {
-                    console.error("Failed to load card.json");
+                    console.error("Failed to load ./data/card.json. Check the path and the file.");
                 });
             }).fail(function () {
-                console.error("Failed to load card.html");
+                console.error("Failed to load ./components/schedule-card.html. Check the template file path.");
             });
 
-            // Load navbar.html
-            $.get("navbar.html", function (navbarHtml) {
+            // Load ./components/navbar.html
+            $.get("./components/navbar.html", function (navbarHtml) {
                 // Append the navbar to the body
                 $('body').prepend(navbarHtml);
             }).fail(function () {
-                console.error("Failed to load navbar.html");
+                console.error("Failed to load ./components/navbar.html. Check the file path.");
             });
 
-            // Load footer.html
-            $.get("footer.html", function (footerHtml) {
+            // Load ./components/footer.html
+            $.get("./components/footer.html", function (footerHtml) {
                 // Append the footer to the body
                 $('body').append(footerHtml);
             }).fail(function () {
-                console.error("Failed to load footer.html");
+                console.error("Failed to load ./components/footer.html. Check the file path.");
             });
         });
     </script>

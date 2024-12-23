@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap 4 Dynamic Cards</title>
+    <title>Promotion Detail</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #promotion-detail {
+            margin-top: 50px;
+        }
+
+        #promotion-detail img {
+            max-width: 100%;
+            height: auto;
+            max-height: 500px;
+            margin-bottom: 20px;
+        }
+
+        #promotion-detail h1 {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="row" id="card-container">
-            <!-- Cards will be dynamically loaded here -->
+    <div class="container">
+        <div id="promotion-detail">
+            <!-- Promotion details will be displayed here -->
         </div>
     </div>
 
@@ -19,43 +35,37 @@
 
     <script>
         $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const promotionId = urlParams.get('id');
 
+            // Load navbar
             $.get("./components/navbar.html", function (navbarHtml) {
                 $('body').prepend(navbarHtml);
             }).fail(function () {
                 console.error("Failed to load ./components/navbar.html");
             });
 
+            // Load footer
             $.get("./components/footer.html", function (footerHtml) {
                 $('body').append(footerHtml);
             }).fail(function () {
                 console.error("Failed to load ./components/footer.html");
             });
 
-            // Load data from ./data/promotion.json
+            // Fetch promotion data based on ID
             $.getJSON("./data/promotion.json", function (data) {
-                const cardContainer = $("#card-container");
+                const promotion = data.find(item => item.id == promotionId);
 
-                // Iterate through the JSON data and create cards
-                data.forEach(item => {
-                    const cardHtml = `
-                        <div class="col-md-3 mb-4">
-                            <div class="card promotion-card" data-id="${item.id}">
-                                <img src="${item.image}" class="card-img-top" style="height: 200px;" alt="${item.title}">
-                                <div class="card-body">
-                                    <h5 class="card-title text-dark">${item.title}</h5>
-                                </div>
-                            </div>
-                        </div>
+                if (promotion) {
+                    const detailHtml = `
+                        <h1>${promotion.title}</h1>
+                        <img src="${promotion.image}" alt="${promotion.title}">
+                        <p>${promotion.description}</p>
                     `;
-                    cardContainer.append(cardHtml);
-                });
-
-                // Add click event to each card
-                $(".promotion-card").on("click", function () {
-                    const promotionId = $(this).data("id");
-                    window.location.href = `promotion-detail.html?id=${promotionId}`;
-                });
+                    $("#promotion-detail").html(detailHtml);
+                } else {
+                    $("#promotion-detail").html("<p>Promotion not found.</p>");
+                }
             }).fail(function () {
                 console.error("Failed to load ./data/promotion.json");
             });
