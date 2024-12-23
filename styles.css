@@ -115,3 +115,45 @@ body {
 .promotion-card:hover {
     transform: scale(1.05); 
 }
+
+/* Hover effect for the movie card */
+.movie-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.movie-card:hover {
+    transform: scale(1.05); 
+}
+
+/* Card image styling */
+.movie-card img {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+/* Card body styling */
+.movie-card .card-body {
+    background-color: #374151;
+    color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Card title styling */
+.movie-card .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Card text styling */
+.movie-card .card-text {
+    margin-bottom: 0.5rem;
+}
+
+

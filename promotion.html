@@ -3,63 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap 4 Dynamic Cards</title>
+    <title>Promotions</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <div class="container mt-5">
         <div class="row" id="card-container">
-            <!-- Cards will be dynamically loaded here -->
+            <!-- Promotion cards will be dynamically loaded here -->
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script>
-        $(document).ready(function () {
 
-            $.get("./components/navbar.html", function (navbarHtml) {
-                $('body').prepend(navbarHtml);
-            }).fail(function () {
-                console.error("Failed to load ./components/navbar.html");
+$(document).ready(function () {
+    // Load Navbar
+    $.get("./components/navbar.html", function (navbarHtml) {
+        $('body').prepend(navbarHtml);
+    }).fail(function () {
+        console.error("Failed to load ./components/navbar.html");
+    });
+
+    // Load Footer
+    $.get("./components/footer.html", function (footerHtml) {
+        $('body').append(footerHtml);
+    }).fail(function () {
+        console.error("Failed to load ./components/footer.html");
+    });
+
+    // Load Promotion Cards
+    $.get("./components/promotion-card.html", function (templateHtml) {
+        // Fetch Promotion Data
+        $.getJSON("./data/promotion.json", function (data) {
+            const cardContainer = $("#card-container");
+
+            // Iterate through the JSON data and create cards
+            data.forEach(item => {
+                const cardTemplate = $(templateHtml);
+
+                // Populate the card template with data
+                cardTemplate.find('.promotion-card').attr('data-id', item.id);
+                cardTemplate.find('.card-img-top')
+                    .attr('src', item.image)
+                    .attr('alt', item.title);
+                cardTemplate.find('.card-title').text(item.title);
+                
+                // Populate the start date
+                cardTemplate.find('#start-date').text(item.startDate); // Assuming 'startDate' is in the JSON data
+
+                // Append the populated card to the container
+                cardContainer.append(cardTemplate);
             });
 
-            $.get("./components/footer.html", function (footerHtml) {
-                $('body').append(footerHtml);
-            }).fail(function () {
-                console.error("Failed to load ./components/footer.html");
+            // Add click event to each card
+            $(".promotion-card").on("click", function () {
+                const promotionId = $(this).data("id");
+                window.location.href = `promotion-detail.html?id=${promotionId}`;
             });
-
-            // Load data from ./data/promotion.json
-            $.getJSON("./data/promotion.json", function (data) {
-                const cardContainer = $("#card-container");
-
-                // Iterate through the JSON data and create cards
-                data.forEach(item => {
-                    const cardHtml = `
-                        <div class="col-md-3 mb-4">
-                            <div class="card promotion-card" data-id="${item.id}">
-                                <img src="${item.image}" class="card-img-top" style="height: 200px;" alt="${item.title}">
-                                <div class="card-body">
-                                    <h5 class="card-title text-dark">${item.title}</h5>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    cardContainer.append(cardHtml);
-                });
-
-                // Add click event to each card
-                $(".promotion-card").on("click", function () {
-                    const promotionId = $(this).data("id");
-                    window.location.href = `promotion-detail.html?id=${promotionId}`;
-                });
-            }).fail(function () {
-                console.error("Failed to load ./data/promotion.json");
-            });
+        }).fail(function () {
+            console.error("Failed to load ./data/promotion.json");
         });
+    }).fail(function () {
+        console.error("Failed to load ./components/promotion-card.html");
+    });
+});
+
+
     </script>
 </body>
 </html>
