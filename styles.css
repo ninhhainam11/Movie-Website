@@ -3,6 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+a {
+    text-decoration: underline;
+    color: #fff;
+}
+a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -156,5 +164,21 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.card {
+    background-color: rgba(0, 0, 0, 0.001); 
+    color: white; 
+    border: none; 
+}
 
+.card-img-top {
+    object-fit: cover;
+}
 
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1rem; 
+    font-weight: bold; 
+}
