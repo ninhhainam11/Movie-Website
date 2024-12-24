@@ -33,43 +33,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const promotionId = urlParams.get('id');
-
-            // Load navbar
-            $.get("./components/navbar.html", function (navbarHtml) {
-                $('body').prepend(navbarHtml);
-            }).fail(function () {
-                console.error("Failed to load ./components/navbar.html");
-            });
-
-            // Load footer
-            $.get("./components/footer.html", function (footerHtml) {
-                $('body').append(footerHtml);
-            }).fail(function () {
-                console.error("Failed to load ./components/footer.html");
-            });
-
-            // Fetch promotion data based on ID
-            $.getJSON("./data/promotion.json", function (data) {
-                const promotion = data.find(item => item.id == promotionId);
-
-                if (promotion) {
-                    const detailHtml = `
-                        <h1>${promotion.title}</h1>
-                        <img src="${promotion.image}" alt="${promotion.title}">
-                        <p>${promotion.description}</p>
-                    `;
-                    $("#promotion-detail").html(detailHtml);
-                } else {
-                    $("#promotion-detail").html("<p>Promotion not found.</p>");
-                }
-            }).fail(function () {
-                console.error("Failed to load ./data/promotion.json");
-            });
-        });
-    </script>
+    <script src="./scripts/loadNavbarFooter.js"></script>
+    <script src="./scripts/promotion-detail.js"></script>
 </body>
 </html>

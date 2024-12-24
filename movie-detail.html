@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img id="movie-image" src="" alt="Movie Image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h1 id="movie-title"></h1>
+                <p><strong>Thể loại:</strong> <span id="movie-type"></span></p>
+                <p><strong>Thời lượng:</strong> <span id="movie-length"></span></p>
+                <p><strong>Ngày khởi chiếu:</strong> <span id="movie-start-time"></span></p>
+                <p><strong>Tóm tắt phim:</strong></p>
+                <p id="movie-description"></p>
+                <!-- Align the button to the right using 'text-right' or 'ml-auto' -->
+                <div class="text-right">
+                    <button id="booking-btn" class="btn btn-primary">Đặt vé</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./scripts/loadNavbarFooter.js"></script>
+    <script src="./scripts/movie-detail.js"></script>
+</body>
+</html>
