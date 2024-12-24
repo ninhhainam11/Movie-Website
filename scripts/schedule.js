@@ -1,18 +1,15 @@
 $(document).ready(function () {
-    // Load the card template from ./components/schedule-card.html
     $.get("./components/schedule-card.html", function (templateHtml) {
-        // Fetch the JSON data
         $.getJSON("./data/movie.json", function (cardData) {
             if (cardData && cardData.length > 0) {
                 function displayCards(cards) {
-                    // Clear the container before appending new cards
                     $('#image-cards-container').empty();
 
                     cards.forEach(function (card) {
-                        // Create a new card using the loaded template
+                        // Tạo card từ template
                         const cardTemplate = $(templateHtml);
 
-                        // Populate the card with JSON data
+                        // Thêm dữ liệu vào card template
                         cardTemplate.find('.card-img-left')
                             .attr('src', card.imageUrl || 'default-image.jpg') // Fallback image
                             .attr('alt', card.name || 'Movie image');
@@ -28,14 +25,13 @@ $(document).ready(function () {
                             window.location.href = `movie-detail.html?id=${card.id}`; // Pass the movie ID in the query string
                         });
 
-                        // Append the populated card to the container
                         $('#image-cards-container').append(cardTemplate);
                     });
                 }
 
                 displayCards(cardData);
 
-                // Get all unique dates from the card data
+                // Lấy tất cả ngày từ JSON và loại bỏ các ngày trùng lặp bằng Set
                 const uniqueDates = [...new Set(cardData.flatMap(card => card.dates))];
 
                 function formatDate(dateStr) {
@@ -43,25 +39,24 @@ $(document).ready(function () {
                     return new Date(`${year}-${month}-${day}`);
                 }
 
-                // Sort the dates in ascending order
+                // Sắp xếp ngày theo thứ tự tăng dần
                 uniqueDates.sort((a, b) => {
                     const dateA = formatDate(a);
                     const dateB = formatDate(b);
-                    return dateA - dateB; // Compare the Date objects
+                    return dateA - dateB; 
                 });
 
-                // Create a button for each unique date
+                // Tạo nút chọn ngày
                 uniqueDates.forEach(date => {
                     const button = $('<button>')
                         .addClass('btn btn-secondary')
                         .text(date)
                         .on('click', function () {
                             const filteredMovies = cardData.filter(card => card.dates.includes(date));
-                            displayCards(filteredMovies); // Display the filtered cards
+                            displayCards(filteredMovies); 
                         });
                     $('#date-buttons-container').append(button);
                 });
-
             } else {
                 console.error("No data available in movie.json");
             }

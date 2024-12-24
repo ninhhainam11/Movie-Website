@@ -2,7 +2,6 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const promotionId = urlParams.get('id');
 
-    // Fetch promotion data based on ID
     $.getJSON("./data/news.json", function (data) {
         const promotion = data.find(item => item.id == promotionId);
 

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Get the movie ID from the URL (e.g., ?id=1)
+    // Lấy ID của phim từ URL
     const urlParams = new URLSearchParams(window.location.search);
     const movieId = urlParams.get('id');
 
@@ -9,9 +9,8 @@ $(document).ready(function () {
         return;
     }
 
-    // Fetch the JSON data
     $.getJSON('./data/movie.json', function (cardData) {
-        // Find the movie that matches the provided ID
+        // Tìm phim có ID trùng với ID truyền vào
         const movie = cardData.find(card => card.id.toString() === movieId);
 
         if (movie) {
@@ -23,7 +22,6 @@ $(document).ready(function () {
             $('#movie-start-time').text(movie.startDate || 'N/A');
             $('#movie-description').text(movie.description || 'No description available.');
         } else {
-            // If the movie is not found
             $('body').html('<h1>Movie not found</h1>');
         }
     }).fail(function () {
@@ -32,8 +30,8 @@ $(document).ready(function () {
     });
 
 
-    // Button click event (redirect to booking.html)
+    // Thêm sự kiện click cho nút đặt vé
     $('#booking-btn').on('click', function() {
-    window.location.href = `booking.html?id=${movieId}`;  // Redirect with the movie ID
+        window.location.href = `booking.html?id=${movieId}`;  
     });
 });

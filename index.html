@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap 4 Dynamic Cards</title>
+    <title>Dream Cinema Vietnam</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-
         .carousel {
             position: relative;
             overflow: hidden;
@@ -45,7 +44,6 @@
     </style>
 </head>
 <body>
-    <!-- Slider movie with data in data in data/movie_banners.json -->
     <div id="carousel" class="carousel">
         <div class="slides" id="slides"></div>
         <button id="prev" class="control prev">Prev</button>
@@ -54,34 +52,26 @@
 
     <div class="container">
         <div class="row">
-            <!-- Movie cards on left side 10/12-->
             <div class="col-10">
                 <h5 class="mt-5 my-4">Phim Đang Chiếu</h5>
                 <div class="row" id="image-cards-container">
-                    <!-- Dynamic cards will be appended here -->
+                    <!-- Card sẽ được thêm động vào đây -->
                 </div>
             </div>
     
-            <!-- Event list on right side 2/12 -->
             <div class="col-2">
                 <h5 class="mt-5 my-4">Khuyến mãi</h5>
                 <div class="row" id="event-list-container">
-                    <!-- Event list will be appended here -->
+                    <!-- Card sự kiện sẽ được thêm động vào đây -->
                 </div>  
             </div>
         </div>
     </div>
-    
-        
-        
-    
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="./scripts/loadNavbarFooter.js"></script>
     <script src="./scripts/index.js"></script>
-
-    
 </body>
 </html>

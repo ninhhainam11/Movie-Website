@@ -10,7 +10,7 @@ $(document).ready(function () {
     // Tải dữ liệu từ movie.json
     $.getJSON('./data/movie.json')
         .done(function (cardData) {
-            // Find the movie that matches the provided ID
+            // Tìm phim dựa trên movieId
             const movie = cardData.find(card => card.id.toString() === movieId);
 
             if (movie) {
@@ -20,11 +20,11 @@ $(document).ready(function () {
                 $('#movieType').text(movie.type.join(', '));
                 $('#movieLength').text(`Thời lượng: ${movie.length}`);
 
-                // Add date buttons
+                // Hiển thị các nút ngày chiếu
                 if (movie.dates && movie.dates.length > 0) {
                     movie.dates.forEach(function (date) {
                         $('#dateButtons').append(
-                            `<button class="btn btn-outline-primary date-button" data-date="${date}">${date}</button>`
+                            `<button class="btn btn-outline-primary date-button mr-3" data-date="${date}">${date}</button>`
                         );
                     });
                 } else {
@@ -35,20 +35,22 @@ $(document).ready(function () {
                 $('body').html('<h1>Movie not found</h1>');
             }
 
-            // Handle date selection
             let selectedDate = null;
             let selectedShowtime = null;
             let selectedSeats = [];
 
             $('#dateButtons').on('click', '.date-button', function () {
                 selectedDate = $(this).data('date');
-                $('#showtimeButtons').empty(); // Clear previous showtimes
+                $('#showtimeButtons').empty(); 
+
+                $('#dateButtons .date-button').removeClass('active');
+                $(this).addClass('active');
 
                 if (movie.showtimes && movie.showtimes[selectedDate]) {
-                    // Add showtimes for the selected date
+                    // Thêm các nút showtime
                     movie.showtimes[selectedDate].forEach(function (showtime) {
                         $('#showtimeButtons').append(
-                            `<button class="btn btn-outline-success showtime-button" data-showtime="${showtime}">${showtime}</button>`
+                            `<button class="btn btn-outline-success showtime-button mr-3" data-showtime="${showtime}">${showtime}</button>`
                         );
                     });
                 } else {
@@ -56,41 +58,59 @@ $(document).ready(function () {
                 }
             });
 
-            // Handle showtime selection
+            // Lựa chọn suất chiếu
             $('#showtimeButtons').on('click', '.showtime-button', function () {
                 selectedShowtime = $(this).data('showtime');
-                $('#seatSelection').show(); // Show seat selection
 
-                // Generate seats dynamically
+                $('#showtimeButtons .showtime-button').removeClass('active');
+                $(this).addClass('active');
+                
+                $('#seatSelection').show(); 
+
                 generateSeats();
             });
 
-            // Function to generate seats dynamically (A1 to H10)
+            // Khởi tạo ghế ngồi
             function generateSeats() {
-                $('#seatContainer').empty(); // Clear previous seats
-                const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']; // Row letters A-H
-                const seatsPerRow = 10; // 1-10 seats per row
-
-                // Create seats for each row
+                $('#seatContainer').empty(); 
+                const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']; 
+                const seatsPerRow = 10; 
+                const vipSeats = [
+                    'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10',
+                    'E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9', 'E10',
+                    'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10'
+                ]; 
+                const sweetboxSeats = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10']; 
+            
+                // Khởi tạo ghế cho từng hàng
                 rows.forEach(function (row) {
-                    const rowDiv = $('<div class="row-seats"></div>'); // Create a div for each row
+                    const rowDiv = $('<div class="row-seats"></div>'); 
                     for (let i = 1; i <= seatsPerRow; i++) {
                         const seatId = `${row}${i}`;
+                        let seatClass = 'regular'; 
+            
+                        // Kiểm tra xem ghế có phải là ghế VIP hoặc Sweetbox không
+                        if (vipSeats.includes(seatId)) {
+                            seatClass = 'vip';
+                        } else if (sweetboxSeats.includes(seatId)) {
+                            seatClass = 'sweetbox';
+                        }
+            
                         rowDiv.append(
-                            `<div class="seat regular" data-id="${seatId}">${seatId}</div>`
+                            `<div class="seat ${seatClass}" data-id="${seatId}">${seatId}</div>`
                         );
                     }
-                    $('#seatContainer').append(rowDiv); // Append the row to the container
+                    $('#seatContainer').append(rowDiv); 
                 });
-
-                // Add event listener for seat selection
+            
+                //thêm sự kiện click vào ghế
                 $('#seatContainer').on('click', '.seat', function () {
                     $(this).toggleClass('selected');
                     calculateTotal();
                 });
             }
 
-            // Function to calculate total price
+            // Tính tổng tiền vé dựa trên số lượng ghế đã chọn và loại ghế
             function calculateTotal() {
                 let total = 0;
                 $('#seatContainer .seat.selected').each(function () {
@@ -101,18 +121,17 @@ $(document).ready(function () {
                 $('#ticketTotalAmount').text(`${total.toLocaleString()} VND`);
             }
 
-            // Handle continue button click
+            $('#backButton').click(function () {
+                window.location.href = 'index.html';
+            });
+
             $('#continueButton').click(function () {
-                // Get selected seats
                 selectedSeats = [];
                 $('#seatContainer .seat.selected').each(function () {
                     selectedSeats.push($(this).data('id'));
                 });
-
-                // Get total amount
                 const totalAmount = $('#ticketTotalAmount').text().replace(' VND', '').replace(',', '');
 
-                // Redirect to payment page with selected information
                 window.location.href = `payment.html?movieTitle=${encodeURIComponent(movie.name)}&selectedDate=${encodeURIComponent(selectedDate)}&selectedShowtime=${encodeURIComponent(selectedShowtime)}&selectedSeats=${encodeURIComponent(selectedSeats.join(','))}&totalAmount=${encodeURIComponent(totalAmount)}`;
             });
 

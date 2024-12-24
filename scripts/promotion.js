@@ -1,29 +1,24 @@
 $(document).ready(function () {
-    // Load Promotion Cards
     $.get("./components/promotion-card.html", function (templateHtml) {
-        // Fetch Promotion Data
         $.getJSON("./data/promotion.json", function (data) {
             const cardContainer = $("#card-container");
 
-            // Iterate through the JSON data and create cards
+            // Duyêt qua từng phần tử trong JSON
             data.forEach(item => {
                 const cardTemplate = $(templateHtml);
 
-                // Populate the card template with data
+                // Thêm dữ liệu vào card template
                 cardTemplate.find('.promotion-card').attr('data-id', item.id);
                 cardTemplate.find('.card-img-top')
                     .attr('src', item.image)
                     .attr('alt', item.title);
                 cardTemplate.find('.card-title').text(item.title);
-                
-                // Populate the start date
-                cardTemplate.find('#start-date').text(item.startDate); // Assuming 'startDate' is in the JSON data
+                cardTemplate.find('#start-date').text(item.startDate); 
 
-                // Append the populated card to the container
                 cardContainer.append(cardTemplate);
             });
 
-            // Add click event to each card
+            // Thêm sự kiện click vào từng card
             $(".promotion-card").on("click", function () {
                 const promotionId = $(this).data("id");
                 window.location.href = `promotion-detail.html?id=${promotionId}`;

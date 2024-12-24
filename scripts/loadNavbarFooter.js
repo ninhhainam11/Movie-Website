@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Load other files (navbar, footer, etc.)
+    // Hiển thị navbar và footer
     $.get("./components/navbar.html", function (navbarHtml) {
         $('body').prepend(navbarHtml);
     }).fail(function () {

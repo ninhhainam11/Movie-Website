@@ -2,8 +2,7 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const promotionId = urlParams.get('id');
 
-
-    // Fetch promotion data based on ID
+    // Hiển thị thông tin chi tiết của promotion
     $.getJSON("./data/promotion.json", function (data) {
         const promotion = data.find(item => item.id == promotionId);
 
