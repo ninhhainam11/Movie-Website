@@ -1,0 +1,79 @@
+[
+    {
+        "id": 1,
+        "title": "RA MẮT BỎNG MIX VỊ - GIÁ KHÔNG ĐỔI",
+        "startDate": "21/12/2024",
+        "image": "./assets/promotion/promotion1.png",
+        "description": "Kể từ tháng 08/2024, Trung tâm Chiếu phim Quốc gia chính thức ra mắt BỎNG MIX VỊ Khán giả thưởng thức cùng lúc 2 vị bỏng: Phô Mai béo ngậy cùng Caramen ngọt ngào với mức giá không đổi chỉ 60.000đ/túi bỏngĐến Trung tâm Chiếu phim Quốc gia xem phim và thưởng thức ngay combo hay ho này nha!"
+    },
+    {
+        "id": 2,
+        "title": "KHUYẾN MÃI GIẢM GIÁ 20% CHO VÉ XEM PHIM",
+        "startDate": "22/12/2024",
+        "image": "./assets/promotion/promotion2.png",
+        "description": "Chính thức kể từ tháng 8/2024, NCC tặng bạn ưu đãi bỏng, nước hấp dẫnThứ 3 - Tuần đầu tiên của thángĂn bắp siêu rẻ đồng giá 25.000đ/bỏng ngọt/caramel/phô mai/mix 2 vịThứ 4 - Tuần thứ hai của thángUống nước thả ga đồng giá 15.000đ/nước Pepsi/7up/Mirinda/LiptonThứ 2 - Cuối thángXem phim xả láng đồng giá 50.000đ/vé 2D mọi loại ghế và suất chiếuĐến xem phim tại Trung tâm Chiếu phim Quốc gia và nhận ưu đãi thôi nào cả nhà ơi !!!!(*) Ưu đãi không áp dụng các ngày lễ, Tết "
+    },
+    {
+        "id": 3,
+        "title": "COMBO NƯỚC NGỌT VÀ BỎNG MỚI - GIÁ SIÊU HẤP DẪN",
+        "startDate": "23/12/2024",
+        "image": "./assets/promotion/promotion3.png",
+        "description": "Thưởng thức combo nước ngọt và bỏng mới với giá chỉ 70.000đ. Kết hợp hoàn hảo cho những buổi xem phim tuyệt vời!"
+    },
+    {
+        "id": 4,
+        "title": "VÉ XEM PHIM 3D GIẢM 30%",
+        "startDate": "24/12/2024",
+        "image": "./assets/promotion/promotion4.png",
+        "description": "Chỉ trong 3 ngày, Trung tâm Chiếu phim Quốc gia áp dụng giảm 30% cho tất cả vé xem phim 3D. Đừng bỏ lỡ cơ hội trải nghiệm phim 3D chất lượng cao với mức giá cực kỳ hấp dẫn!"
+    },
+    {
+        "id": 5,
+        "title": "MUA 1 TẶNG 1 VÉ XEM PHIM",
+        "startDate": "25/12/2024",
+        "image": "./assets/promotion/promotion5.png",
+        "description": "Mua 1 vé xem phim, tặng ngay 1 vé miễn phí. Chỉ áp dụng trong thời gian có hạn, hãy đến Trung tâm Chiếu phim Quốc gia để nhận ưu đãi này!"
+    },
+    {
+        "id": 6,
+        "title": "COMBO BỎNG PHÔ MAI VÀ NƯỚC NGỌT GIẢM 15%",
+        "startDate": "26/12/2024",
+        "image": "./assets/promotion/promotion6.png",
+        "description": "Thưởng thức combo bỏng phô mai béo ngậy và nước ngọt yêu thích với mức giảm giá 15%. Tận hưởng trọn vẹn buổi xem phim với combo tuyệt vời này!"
+    },
+    {
+        "id": 7,
+        "title": "GIẢM 50% CHO VÉ XEM PHIM BUỔI SÁNG",
+        "startDate": "27/12/2024",
+        "image": "./assets/promotion/promotion7.png",
+        "description": "Giảm ngay 50% cho tất cả vé xem phim buổi sáng. Khởi đầu ngày mới với một bộ phim hay và mức giá cực kỳ ưu đãi!"
+    },
+    {
+        "id": 8,
+        "title": "COMBO NƯỚC NGỌT VÀ BỎNG KHOAI TÂY GIẢM 20%",
+        "startDate": "28/12/2024",
+        "image": "./assets/promotion/promotion8.png",
+        "description": "Thưởng thức combo nước ngọt và bỏng khoai tây giòn ngon với mức giảm giá 20%. Đừng bỏ lỡ cơ hội này khi đến xem phim!"
+    },
+    {
+        "id": 9,
+        "title": "VÉ XEM PHIM GIẢM 25% DÀNH CHO SINH VIÊN",
+        "startDate": "29/12/2024",
+        "image": "./assets/promotion/promotion9.png",
+        "description": "Chỉ dành riêng cho sinh viên! Giảm ngay 25% cho tất cả vé xem phim khi xuất trình thẻ sinh viên tại quầy vé."
+    },
+    {
+        "id": 10,
+        "title": "COMBO BỎNG CARAMEL VÀ NƯỚC NGỌT CHỈ 50.000Đ",
+        "startDate": "30/12/2024",
+        "image": "./assets/promotion/promotion10.png",
+        "description": "Một combo hấp dẫn với bỏng caramel ngọt ngào và nước ngọt yêu thích chỉ 50.000đ. Một sự kết hợp tuyệt vời cho buổi xem phim của bạn!"
+    },
+    {
+        "id": 11,
+        "title": "MUA VÉ ONLINE GIẢM 10%",
+        "startDate": "31/12/2024",
+        "image": "./assets/promotion/promotion11.png",
+        "description": "Mua vé online ngay hôm nay và nhận ngay ưu đãi giảm 10%. Tiết kiệm thời gian và tiền bạc khi mua vé trực tuyến!"
+    }
+]

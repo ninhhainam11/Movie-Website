@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Pricing Table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #2a2a2a;
+        }
+        tr:nth-child(odd) {
+            background-color: #1e1e1e;
+        }
+        tr:nth-child(even) {
+            background-color: #292929;
+        }
+        .vip {
+            color: #f8c301;
+            font-weight: bold;
+        }
+        .sweetbox {
+            color: #ff4d4d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mt-5">Giá vé xem phim</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Thời gian</th>
+                    <th colspan="3">Từ thứ 2 đến thứ 5</th>
+                    <th colspan="3">Thứ 6, 7, CN và ngày Lễ</th>
+                </tr>
+                <tr>
+                    <th class="text-center">Ghế thường<br>Standard</th>
+                    <th class="vip text-center">Ghế VIP<br>VIP</th>
+                    <th class="sweetbox text-center">Ghế đôi<br>Sweetbox</th>
+                    <th>Ghế thường<br>Standard</th>
+                    <th class="vip">Ghế VIP<br>VIP</th>
+                    <th class="sweetbox">Ghế đôi<br>Sweetbox</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Trước 12h</td>
+                    <td>55.000đ</td>
+                    <td class="vip text-center">65.000đ</td>
+                    <td class="sweetbox text-center">140.000đ</td>
+                    <td>70.000đ</td>
+                    <td class="vip">80.000đ</td>
+                    <td class="sweetbox">170.000đ</td>
+                </tr>
+                <tr>
+                    <td>Từ 12:00 đến trước 17:00</td>
+                    <td>70.000đ</td>
+                    <td class="vip ">75.000đ</td>
+                    <td class="sweetbox">160.000đ</td>
+                    <td>80.000đ</td>
+                    <td class="vip">85.000đ</td>
+                    <td class="sweetbox">180.000đ</td>
+                </tr>
+                <tr>
+                    <td>Từ 17:00 đến trước 23:00</td>
+                    <td>80.000đ</td>
+                    <td class="vip">85.000đ</td>
+                    <td class="sweetbox">180.000đ</td>
+                    <td>90.000đ</td>
+                    <td class="vip">95.000đ</td>
+                    <td class="sweetbox">200.000đ</td>
+                </tr>
+                <tr>
+                    <td>Từ 23:00</td>
+                    <td>65.000đ</td>
+                    <td class="vip">70.000đ</td>
+                    <td class="sweetbox">150.000đ</td>
+                    <td>75.000đ</td>
+                    <td class="vip">80.000đ</td>
+                    <td class="sweetbox">170.000đ</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="text-center mt-5">Chính Sách Giá Vé Xem Phim</h2>
+
+        <div class="mt-4">
+            <h4>1. Phụ thu đối với phim có thời lượng từ 150 phút trở lên:</h4>
+            <p>Phụ thu 10.000 VNĐ/vé.</p>
+        </div>
+
+        <div class="mt-4">
+            <h4>2. Giá vé đối với các đối tượng khán giả ưu tiên (khi trực tiếp sử dụng dịch vụ xem phim tại rạp chiếu phim):</h4>
+            <ul>
+                <li><strong>Giảm 20% giá vé đối với:</strong>
+                    <ul>
+                        <li>Trẻ em (dưới 16 tuổi).</li>
+                        <li>Người cao tuổi (công dân Việt Nam từ đủ 60 tuổi trở lên).</li>
+                        <li>Người có công với cách mạng.</li>
+                        <li>Người có hoàn cảnh đặc biệt khó khăn.</li>
+                    </ul>
+                </li>
+                <li><strong>Giảm 50% giá vé đối với:</strong> Người khuyết tật nặng.</li>
+                <li><strong>Giảm 100% giá vé đối với:</strong>
+                    <ul>
+                        <li>Người khuyết tật đặc biệt nặng.</li>
+                        <li>Trẻ em dưới 0.7m đi kèm với người lớn.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h4>Điều kiện:</h4>
+            <ul>
+                <li>Áp dụng khi mua vé tại quầy (không áp dụng khi mua vé online).</li>
+                <li>Các đối tượng khán giả trên phải xuất trình giấy tờ chứng minh khi mua vé và trước khi vào phòng chiếu. Cụ thể:
+                    <ul>
+                        <li>Trẻ em (14-16 tuổi), người cao tuổi: xuất trình "Căn cước công dân".</li>
+                        <li>Người có công với cách mạng: xuất trình giấy xác nhận theo quy định.</li>
+                        <li>Người có hoàn cảnh đặc biệt khó khăn: xuất trình "Giấy chứng nhận hộ nghèo".</li>
+                        <li>Người khuyết tật: xuất trình "Giấy xác nhận khuyết tật".</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h4>3. Ưu đãi cho học sinh, sinh viên từ 22 tuổi trở xuống:</h4>
+            <p>Đồng giá 55.000đ/vé 2D cho tất cả các suất chiếu phim từ Thứ 2 đến Thứ 6 (chỉ áp dụng cho hình thức mua vé trực tiếp tại quầy, không áp dụng với ghế đôi; Mỗi thẻ được mua 1 vé/ngày và vui lòng xuất trình thẻ U22 kèm thẻ HSSV khi mua vé).</p>
+        </div>
+
+        <div class="mt-4">
+            <h4>4. Khán giả nghiêm túc thực hiện xem phim đúng độ tuổi theo phân loại phim:</h4>
+            <p>P, K, T13, T16, T18, C. (Trường hợp vi phạm sẽ xử phạt theo Quy định tại Nghị định 128/2022/NĐ-CP ngày 30/12/2022).</p>
+        </div>
+
+        <div class="mt-4">
+            <h4>5. Không bán vé cho trẻ em dưới 13 tuổi đối với các suất chiếu phim kết thúc sau 22h00 và không bán vé cho trẻ em dưới 16 tuổi đối với các suất chiếu phim kết thúc sau 23h00.</h4>
+        </div>
+
+        <div class="mt-4">
+            <h4>6. Áp dụng giá vé ngày Lễ, Tết cho các ngày:</h4>
+            <ul>
+                <li>Các ngày nghỉ Lễ, Tết theo quy định của nhà nước: Tết Nguyên Đán, Tết Dương Lịch, ngày Giỗ Tổ Hùng Vương 10/3 AL, ngày 30/4, 1/5, 2/9.</li>
+                <li>Các ngày: 14/2, 8/3, 24/12.</li>
+                <li>Các ngày: Nghỉ bù do nghỉ Lễ, Tết trùng vào thứ 7, Chủ Nhật.</li>
+            </ul>
+        </div>
+
+        <div class="mt-4">
+            <h4>7. Không áp dụng các chế độ ưu đãi, các chương trình khuyến mại khác vào các ngày 20/10, 20/11, Halloween 31/10, các ngày Lễ, Tết, suất chiếu sớm và suất chiếu đặc biệt.</h4>
+        </div>
+
+        <div class="mt-4">
+            <h4>8. Mua vé xem phim tập thẻ, hợp đồng khoán gọn:</h4>
+            <p>Phòng chiếu phim - (024) 35148647</p>
+        </div>
+
+        <div class="mt-4">
+            <h4>9. Thuê phòng tổ chức Hội nghị, làm văn phòng, quảng cáo và các dịch vụ khác:</h4>
+            <p>Phòng Dịch vụ - (024) 35142856</p>
+        </div>
+
+        <div class="mt-4">
+            <h4>10. Đề nghị quý khán giả lưu ý khi mua vé xem phim (đặc biệt khi mua vé online):</h4>
+            <p>TTCPQG không chấp nhận hoàn tiền hoặc đổi vé đã thanh toán thành công khi mua vé online và vé mua sai quy định tại quầy vé.</p>
+        </div>
+
+        <div class="mt-4">
+            <h4>Xin trân trọng cảm ơn!</h4>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="./scripts/loadNavbarFooter.js"></script>
+
+</body>
+</html>
