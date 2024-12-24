@@ -188,22 +188,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            // Load other files (navbar, footer, etc.)
-            $.get("./components/navbar.html", function (navbarHtml) {
-                $('body').prepend(navbarHtml);
-            }).fail(function () {
-                console.error("Failed to load ./components/navbar.html");
-            });
-
-            $.get("./components/footer.html", function (footerHtml) {
-                $('body').append(footerHtml);
-            }).fail(function () {
-                console.error("Failed to load ./components/footer.html");
-            });
-        });
-    </script>
+    <script src="./scripts/loadNavbarFooter.js"></script>
 
 </body>
 </html>
