@@ -32,6 +32,13 @@ $(document).ready(function () {
 
     // Thêm sự kiện click cho nút đặt vé
     $('#booking-btn').on('click', function() {
+        const user = JSON.parse(localStorage.getItem('accounts'));
+        if(!user) {
+            alert('Vui lòng đăng nhập để đặt vé!');
+            window.location.href = 'login.html';
+            return;
+        }
+
         window.location.href = `booking.html?id=${movieId}`;  
     });
 });

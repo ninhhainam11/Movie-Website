@@ -10,7 +10,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2a2a2a;">
         <div class="container">
             <!-- Brand -->
-            <a class="navbar-brand" href="index.html">My Website</a>
+            <a class="navbar-brand" href="index.html">
+                <img src="../assets/logo.svg" alt="My Website Logo" style="height: 40px; width: auto;"> <!-- Replace path-to-logo/logo.png with your actual logo path -->
+            </a>
 
             <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,16 +35,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="promotion.html">Khuyến mãi</a>
                     </li>
-                    
                     <li class="nav-item">
                         <a class="nav-link" href="price.html">Bảng giá</a>
                     </li>
                 </ul>
 
-                <!-- Login and Register Buttons -->
+                <!-- Login, Register, and Logout Buttons -->
                 <div class="d-flex">
-                    <button class="btn btn-outline-light me-2 rounded-3" type="button">Đăng ký</button>
-                    <button class="btn btn-light rounded-3 ml-3" type="button">Đăng nhập</button>
+                    <a href="register.html" class="btn btn-outline-light me-2 rounded-3" id="registerButton">Đăng ký</a>
+                    <a href="login.html" class="btn btn-light rounded-3 ml-3" id="loginButton">Đăng nhập</a>
+                    <a  class="btn text-white" id="navbarUser" style="display: none;"></a>
+                    <a href="#" class="btn btn-outline-light rounded-3" id="logoutButton" style="display: none;">Đăng xuất</a>
                 </div>
             </div>
         </div>
@@ -52,8 +55,5 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    
-
 </body>
 </html>

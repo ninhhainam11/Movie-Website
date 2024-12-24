@@ -76,10 +76,10 @@ $(document).ready(function () {
             cardTemplate.classList.add('col-6', 'col-md-4', 'col-lg-3', 'mb-4');
 
             cardTemplate.innerHTML = `
-                <div class="card">
-                    <img src="${card.imageUrl || 'default-image.jpg'}" class="card-img-top rounded-lg" alt="${card.name || 'Movie image'}">
+                <div class="card h-100">
+                    <img src="${card.imageUrl || 'default-image.jpg'}" class="card-img-top rounded-lg" style="height:300px" alt="${card.name || 'Movie image'}">
                     <div class="card-body">
-                        <h5 class="card-title">${card.name || 'Untitled'}</h5>
+                        <h5 class="card-title text-center">${card.name || 'Untitled'}</h5>
                     </div>
                 </div>
             `;

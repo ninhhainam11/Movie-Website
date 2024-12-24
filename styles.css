@@ -32,7 +32,7 @@ body {
     box-shadow: none; 
 }
 
-/*  Add hover effect */
+
 #date-buttons-container .btn:hover {
     background-color: darkred;
     border-color: darkred;
@@ -45,7 +45,7 @@ body {
     padding: 40px 20px;
     color: #fff;
     font-size: 14px;
-    margin-top:50px;
+    margin-top:100px;
 }
 
 .footer-top {
@@ -114,7 +114,6 @@ body {
     border-top: 1px solid #333;
     margin-top: 20px;
     padding-top: 60px;
-    
 }
 
 .promotion-card {
@@ -126,7 +125,7 @@ body {
     transform: scale(1.05); 
 }
 
-/* Hover effect for the movie card */
+
 .movie-card {
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -138,7 +137,7 @@ body {
     transform: scale(1.05); 
 }
 
-/* Card image styling */
+
 .movie-card img {
     width: 200px;
     height: auto;
@@ -147,7 +146,6 @@ body {
     border-bottom-left-radius: 10px;
 }
 
-/* Card body styling */
 .movie-card .card-body {
     background-color: #374151;
     color: white;
@@ -155,13 +153,11 @@ body {
     border-bottom-right-radius: 10px;
 }
 
-/* Card title styling */
 .movie-card .card-title {
     font-size: 1.25rem;
     font-weight: bold;
 }
 
-/* Card text styling */
 .movie-card .card-text {
     margin-bottom: 0.5rem;
 }
@@ -183,6 +179,22 @@ body {
 .card-title {
     font-size: 1rem; 
     font-weight: bold; 
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+}
+
+
+.card-body {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
