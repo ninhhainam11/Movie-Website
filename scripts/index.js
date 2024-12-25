@@ -15,7 +15,7 @@ $(document).ready(function () {
             img.alt = item.name;
             slide.appendChild(img);
             slidesContainer.appendChild(slide);
-
+            
             // Điều hướng tới movie-detail.html khi click vào slide
             slide.style.cursor = 'pointer';
             slide.addEventListener('click', () => {
@@ -51,8 +51,13 @@ $(document).ready(function () {
 
         updateCarousel();
     }
+    // Tự chuyển slide mỗi khi slide hiển thị được 5s
+    setInterval(() => {
+        const nextButton = document.getElementById('next');
+        nextButton.click();
+    }, 5000);
 
-
+    // Add click event to navigate to the schedule page
     $(".col-10 h5").on("click", function () {
         window.location.href = `schedule.html`;
     });
@@ -87,6 +92,13 @@ $(document).ready(function () {
 
             // Điều hướng tới movie-detail.html khi click vào card
             cardTemplate.style.cursor = 'pointer';
+            cardTemplate.style.transition = 'transform 0.2s';
+            cardTemplate.addEventListener('mouseenter', () => {
+                cardTemplate.style.transform = 'scale(1.05)';
+            });
+            cardTemplate.addEventListener('mouseleave', () => {
+                cardTemplate.style.transform = 'scale(1)';
+            });
             cardTemplate.addEventListener('click', () => {
                 window.location.href = `movie-detail.html?id=${card.id}`; 
             });
@@ -127,6 +139,13 @@ $(document).ready(function () {
 
             // Điều hướng tới promition-detail.html khi click vào sự kiện
             eventTemplate.style.cursor = 'pointer';
+            eventTemplate.style.transition = 'transform 0.2s';
+            eventTemplate.addEventListener('mouseenter', () => {
+                eventTemplate.style.transform = 'scale(1.05)';
+            });
+            eventTemplate.addEventListener('mouseleave', () => {
+                eventTemplate.style.transform = 'scale(1)';
+            });
             eventTemplate.addEventListener('click', () => {
                 window.location.href = `promotion-detail.html?id=${event.id}`;
             });
@@ -147,6 +166,15 @@ $(document).ready(function () {
                 </p>
             `;
             eventListContainer.appendChild(seeAllButton);
+            seeAllButton.style.cursor = 'pointer';
+            seeAllButton.addEventListener('mouseenter', () => {
+                seeAllButton.style.textDecoration = 'underline';
+            }
+            );
+            seeAllButton.addEventListener('mouseleave', () => {
+                seeAllButton.style.textDecoration = 'none';
+            }
+            );
         }
     })
     .catch(error => console.error('Error loading JSON data:', error));
