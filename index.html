@@ -64,6 +64,17 @@
         <div class="row">
             <div class="col-10">
                 <h5 class="mt-5 my-4">Phim Đang Chiếu</h5>
+                <!-- Thanh tìm kiếm  -->
+                <form id="search-form" class="mb-4">
+                    <div class="input-group input-group-lg">
+                        <input type="text" id="search-input" class="form-control" placeholder="Tìm kiếm phim..." aria-label="Tìm kiếm phim" aria-describedby="search-button">
+                        <div class="input-group-append">
+                            <button class="btn btn-dark" type="submit" id="search-button">
+                                <i class="fas fa-search"></i> Tìm
+                            </button>
+                        </div>
+                    </div>
+                </form>
                 <div class="row" id="image-cards-container">
                     <!-- Card sẽ được thêm động vào đây -->
                 </div>
@@ -73,10 +84,12 @@
                 <h5 class="mt-5 my-4">Khuyến mãi</h5>
                 <div class="row" id="event-list-container">
                     <!-- Card sự kiện sẽ được thêm động vào đây -->
-                </div>  
+                </div>
             </div>
         </div>
     </div>
+    
+    
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>

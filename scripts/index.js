@@ -52,6 +52,12 @@ $(document).ready(function () {
         updateCarousel();
     }
 
+    // Tự chuyển slide mỗi khi slide hiển thị được 5s
+    setInterval(() => {
+        const nextButton = document.getElementById('next');
+        nextButton.click();
+    }, 5000);
+
 
     $(".col-10 h5").on("click", function () {
         window.location.href = `schedule.html`;
@@ -64,36 +70,47 @@ $(document).ready(function () {
     $(".col-10, .col-2").css("cursor", "pointer");
 
 
-    // Hiển thị movie card
-    fetch('data/movie.json')
-    .then(response => response.json())
-    .then(data => {
-        const imageCardsContainer = document.getElementById('image-cards-container');
-        const maxVisibleMovies = 16; 
+    let allMovies = []; // Lưu trữ tất cả các phim để sử dụng cho chức năng tìm kiếm
 
-        data.slice(0, maxVisibleMovies).forEach(card => {
+    // Lấy dữ liệu và hiển thị danh sách phim
+    fetch('data/movie.json')
+        .then(response => response.json())
+        .then(data => {
+            allMovies = data; // Lưu tất cả các phim vào biến
+            displayMovies(data); // Hiển thị toàn bộ danh sách phim ban đầu
+        })
+        .catch(error => console.error('Lỗi khi tải dữ liệu JSON:', error));
+
+    // Hàm hiển thị danh sách phim
+    function displayMovies(movies) {
+        const imageCardsContainer = document.getElementById('image-cards-container');
+        imageCardsContainer.innerHTML = ''; // Xóa nội dung cũ
+        const maxVisibleMovies = 16; // Số lượng phim tối đa hiển thị
+
+        // Duyệt qua danh sách phim và thêm vào giao diện
+        movies.slice(0, maxVisibleMovies).forEach(card => {
             const cardTemplate = document.createElement('div');
             cardTemplate.classList.add('col-6', 'col-md-4', 'col-lg-3', 'mb-4');
 
             cardTemplate.innerHTML = `
-                <div class="card h-100">
-                    <img src="${card.imageUrl || 'default-image.jpg'}" class="card-img-top rounded-lg" style="height:300px" alt="${card.name || 'Movie image'}">
+                <div class="card h-100 index-card">
+                    <img src="${card.imageUrl || 'default-image.jpg'}" class="card-img-top rounded-lg" style="height:300px" alt="${card.name || 'Hình ảnh phim'}">
                     <div class="card-body">
-                        <h5 class="card-title text-center">${card.name || 'Untitled'}</h5>
+                        <h5 class="card-title text-center">${card.name || 'Không có tiêu đề'}</h5>
                     </div>
                 </div>
             `;
             imageCardsContainer.appendChild(cardTemplate);
 
-            // Điều hướng tới movie-detail.html khi click vào card
+            // Thêm sự kiện click để điều hướng tới trang chi tiết phim
             cardTemplate.style.cursor = 'pointer';
             cardTemplate.addEventListener('click', () => {
-                window.location.href = `movie-detail.html?id=${card.id}`; 
+                window.location.href = `movie-detail.html?id=${card.id}`;
             });
         });
 
-        // Thêm nút xem tất cả
-        if (data.length > maxVisibleMovies) {
+        // Thêm nút "Xem tất cả" nếu số lượng phim vượt quá giới hạn
+        if (movies.length > maxVisibleMovies) {
             const seeAllButton = document.createElement('div');
             seeAllButton.classList.add('col-12', 'mt-3');
             seeAllButton.innerHTML = `
@@ -103,8 +120,21 @@ $(document).ready(function () {
             `;
             imageCardsContainer.appendChild(seeAllButton);
         }
-    })
-    .catch(error => console.error('Error loading JSON data:', error));
+    }
+
+    // Xử lý sự kiện tìm kiếm
+    $('#search-form').on('submit', function (event) {
+        event.preventDefault(); // Ngăn chặn hành động submit mặc định của form
+        const query = $('#search-input').val().toLowerCase(); // Lấy giá trị từ ô tìm kiếm và chuyển thành chữ thường
+
+        // Lọc danh sách phim theo tên
+        const filteredMovies = allMovies.filter(movie => 
+            movie.name && movie.name.toLowerCase().includes(query)
+        );
+
+        // Hiển thị danh sách phim đã lọc
+        displayMovies(filteredMovies);
+    });
 
 
     // Hiển thị sự kiện
